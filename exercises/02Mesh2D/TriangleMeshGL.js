@@ -46,9 +46,9 @@ export class TriangleMeshGL{
         gl.vertexAttribPointer(colorAttributeLocation, 3, gl.FLOAT, false, 0, 0);
 
         // Erzeuge 2 VAO
-        this.vao = gl.createVertexArray();
+        this.vaowf = gl.createVertexArray();
         // Daran die Position binden (man muss keine Daten neu hochladen)
-        gl.bindVertexArray(this.vao);
+        gl.bindVertexArray(this.vaowf);
         // Neuer Element Array Buffer anlegen, für Wireframe
         const WireframeBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, WireframeBuffer);
@@ -70,6 +70,7 @@ export class TriangleMeshGL{
     }
     drawWireFrame()
     {
+        // todo bind wireframe vao
         this.gl.drawElements(this.gl.LINES, this.nTriangleIndices * 2, this.gl.UNSIGNED_INT, 0);
 
     }

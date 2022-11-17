@@ -62,7 +62,7 @@ function SimpleTriangle() {
     // 7. Bind Vertex Array Object (see step 2)
     gl.bindVertexArray(vao);
     // 8. Draw triangle mesh.
-    gl.drawElements(gl.TRIANGLES, 1, gl.UNSIGNED_INT, 1);
+    gl.drawElements(gl.TRIANGLES, 3, gl.UNSIGNED_INT, 0);
 
     requestAnimationFrame(draw);
   }

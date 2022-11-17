@@ -55,7 +55,7 @@ function Mesh2DApp() {
 
     //Lab 03, Aufgabe 1(a)
 
-    triangleMeshGL.drawWireFrame();
+    //triangleMeshGL.drawWireFrame();
   
    
     requestAnimationFrame(draw);

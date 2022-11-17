@@ -12,8 +12,8 @@ out vec3 v_color;
 void main()
 {
     // Lab 02, Aufgabe 3(b)
-    gl_Position = vec4(a_position.xyz, 1.0f);
+    gl_Position = vec4(a_position.xy, 1.0f, 1.0f);
     // Lab 02, Aufgabe 2
-    v_color = abs(inColor.xyz);
+    v_color = (inColor.xyz);
     
 }
