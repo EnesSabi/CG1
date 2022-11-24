@@ -41,6 +41,13 @@ function Mesh2DApp() {
     let bB = parseInt(backgroundColor.substr(5,2),16)/256.0;
 
     // Lab 02, Aufgabe 3(b)
+    let m1 = Matrix3.translation(translateX,translateY);
+    let m2 = Matrix3.scaling(scaleX, scaleY);
+    let m3 = Matrix3.rotation(rotation);
+    let m4 = Matrix3.multiply(m1, m2);
+
+    const m_matrix = mGlslProgram.getUniformLocation("matrix_3");
+
     // Lab 02, Aufgabe 3(c)
 
     // Lab 02, Aufgabe 1(c)
@@ -50,7 +57,7 @@ function Mesh2DApp() {
     // Lab 02, Aufgabe 1(b)
     triangleMeshGL.draw();
     // Lab 02, Aufgabe 3(b)
-
+    gl.uniformMatrix3fv(m_matrix, true, m2)
 
 
     //Lab 03, Aufgabe 1(a)

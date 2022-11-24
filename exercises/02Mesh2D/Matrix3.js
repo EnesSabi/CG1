@@ -4,8 +4,8 @@ export let Matrix3 = {
     translation: function (tx, ty) {
         // Lab 02, Aufgabe 3(a)
         return [
-            1, 0, 0,
-            0, 1, 0,
+            1, 0, tx,
+            0, 1, ty,
             0, 0, 1,
         ];
     },
@@ -14,8 +14,8 @@ export let Matrix3 = {
     rotation: function (angleInRadians) {
         // Lab 02, Aufgabe 3(a)
         return [
-            1, 0, 0,
-            0, 1, 0,
+            Math.cos(angleInRadians), -Math.sin(angleInRadians) , 0,
+            Math.sin(angleInRadians), Math.cos(angleInRadians), 0,
             0, 0, 1,
         ];
     },
@@ -24,8 +24,8 @@ export let Matrix3 = {
     scaling: function (sx, sy) {
         // Lab 02, Aufgabe 3(a)
         return [
-            1, 0, 0,
-            0, 1, 0,
+            sx, 0, 0,
+            0, sy, 0,
             0, 0, 1,
         ];
     },
@@ -33,12 +33,17 @@ export let Matrix3 = {
     // Returns the product of two 3x3 matrices.
     multiply: function (a, b) {
         // Lab 03, Aufgabe 3(a)
-        return [
-            1, 0, 0,
-            0, 1, 0,
-            0, 0, 1,
-        ];
-
+        let c = [9];
+        for (let i = 1; i < 3; i++) {
+            for(let j = 1; i < 3; i++) {
+                let sum = 0;
+                for(let k = 1; i < 3; i++) {
+                    sum = sum +  a[i+k-1] * b[k+i-1]   
+                }
+                c[i+j-1] = sum
+            }
+        }
+        return c;
     },
 
     // Creates a 3x3 homogeneous matrix that scales a [-1;1]x[-1;1] coordinate frame such that no skewing happens when mapping to a [0;w-1]x[0;h-1] pixel grid
