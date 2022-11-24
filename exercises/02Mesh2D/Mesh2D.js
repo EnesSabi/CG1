@@ -35,6 +35,9 @@ function Mesh2DApp() {
     let scaleX = document.getElementById("ScaleX").value;
     let scaleY = document.getElementById("ScaleY").value;
     let rotation = document.getElementById("Rotation").value;
+    // eigene Ratio
+    let aspectX =  mCanvas.clientWidth;
+    let aspectY =  mCanvas.clientHeight;
     
     let rB = parseInt(backgroundColor.substr(1,2),16)/256.0;
     let gB = parseInt(backgroundColor.substr(3,2),16)/256.0;
@@ -44,7 +47,9 @@ function Mesh2DApp() {
     let m1 = Matrix3.translation(translateX,translateY);
     let m2 = Matrix3.scaling(scaleX, scaleY);
     let m3 = Matrix3.rotation(rotation);
-    let m4 = Matrix3.multiply(m1, m2);
+    let m4 = Matrix3.aspect(aspectX, aspectY);
+    let m5 = Matrix3.multiply(m4, 
+                               Matrix3.multiply(Matrix3.multiply(m2, m1),m3));
 
     const m_matrix = mGlslProgram.getUniformLocation("matrix_3");
 
@@ -57,7 +62,7 @@ function Mesh2DApp() {
     // Lab 02, Aufgabe 1(b)
     triangleMeshGL.draw();
     // Lab 02, Aufgabe 3(b)
-    gl.uniformMatrix3fv(m_matrix, true, m2)
+    gl.uniformMatrix3fv(m_matrix, true, m5)
 
 
     //Lab 03, Aufgabe 1(a)
