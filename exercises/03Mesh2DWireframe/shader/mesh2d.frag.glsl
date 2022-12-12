@@ -7,6 +7,7 @@ out vec4 fragColor;
 //add uniform vec3s to the frag
 uniform vec3 u_color;
 uniform vec3 w_color;
+in vec2 wireFrame;
 
 void main()
 {

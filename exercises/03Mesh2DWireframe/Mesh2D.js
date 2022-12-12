@@ -35,6 +35,7 @@ function Mesh2DApp() {
     let scaleX = document.getElementById("ScaleX").value;
     let scaleY = document.getElementById("ScaleY").value;
     let rotation = document.getElementById("Rotation").value;
+    //self implementing values and checks
     let wireFrameColor = document.getElementById("WireFrameColor").value;
     let useWireFrame = document.getElementById("useWireFrame").checked;
     // eigene Ratio
@@ -61,8 +62,8 @@ function Mesh2DApp() {
     const m_matrix = mGlslProgram.getUniformLocation("matrix_3");
 
     // Lab 02, Aufgabe 3(c)
-    const u_color = mGlslProgram.getUniformLocation("");
-    const w_color = mGlslProgram.getUniformLocation("");
+    const u_color = mGlslProgram.getUniformLocation("u_color");
+    const w_color = mGlslProgram.getUniformLocation("w_color");
     // Lab 02, Aufgabe 1(c)
     gl.clearColor(rB, gB, bB, 1.0);
 
@@ -79,7 +80,7 @@ function Mesh2DApp() {
 
     //Lab 03, Aufgabe 1(a)
     if(useWireFrame == true) {
-      //console.log("useWireFrame == true");
+      console.log("useWireFrame == true");
       triangleMeshGL.drawWireFrame();
     }
     
